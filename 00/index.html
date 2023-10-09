@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lession 00 - Programing Basics</title>
+    <!-- Loads our Javascript file -->
+    <script src="./scripts.js"></script>
+    <!-- Stylesheets -->
+  </head>
+  <body
+    style="
+      margin: 50px auto;
+      max-width: 1000px;
+      background-color: rgb(255, 204, 0);
+      color: white;
+    "
+  >
+    <h1 id="title">Introduction to Programing and Web Development</h1>
+    <p>This is a raw webpage with a number of html elements</p>
+    <br />
+    <hr />
+    <br />
+    <h2>This is s a list</h2>
+    <ol>
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+    </ol>
+    <br />
+    <hr />
+    <br />
+    <h2>This is s a table</h2>
+    <br />
+    <table>
+      <tr>
+        <th>Company</th>
+        <th>Contact</th>
+        <th>Country</th>
+      </tr>
+      <tr>
+        <td>Alfreds Futterkiste</td>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+      </tr>
+      <tr>
+        <td>Ernst Handel</td>
+        <td>Roland Mendel</td>
+        <td>Austria</td>
+      </tr>
+      <tr>
+        <td>Island Trading</td>
+        <td>Helen Bennett</td>
+        <td>UK</td>
+      </tr>
+      <tr>
+        <td>Laughing Bacchus Winecellars</td>
+        <td>Yoshi Tannamuri</td>
+        <td>Canada</td>
+      </tr>
+      <tr>
+        <td>Magazzini Alimentari Riuniti</td>
+        <td>Giovanni Rovelli</td>
+        <td>Italy</td>
+      </tr>
+    </table>
+    <!-- Style tags let us write CSS in HTML -->
+    <!-- But we ussually stick styles in our CSS file -->
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      hr {
+        background-color: white;
+        color: white;
+        border: none;
+        padding: 1px;
+      }
+    </style>
+    <hr />
+    <br />
+    <h2>These are images</h2>
+    <br />
+    <!-- We need to give image tags a src (source) attribute  -->
+    <!-- that contains the path or url to our image -->
+    <!-- Image hosted locally in our images folder -->
+    <img src="../images/cave.jpg" width="49%" alt="Someone in a cave" />
+    <!-- Image from a URL -->
+    <img
+      src="https://images.unsplash.com/photo-1682685797208-c741d58c2eff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+      width="49%"
+      alt="Someone in a cave"
+    />
+  </body>
+</html>
