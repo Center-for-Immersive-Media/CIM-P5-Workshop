@@ -1,3 +1,5 @@
+import("../js/p5.min.js");
+
 const preview = document.getElementById("preview");
 const lessions = document.querySelectorAll(".lession");
 

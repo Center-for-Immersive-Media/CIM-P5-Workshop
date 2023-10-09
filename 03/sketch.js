@@ -9,6 +9,7 @@
 // Since the P5.js library is loaded, we can use the functions
 // and variables that are defined in the library.
 // You can find the documentation for P5.js here: https://p5js.org/reference/
+import("../js/p5.min.js");
 
 let cnv;
 let delay = 0;

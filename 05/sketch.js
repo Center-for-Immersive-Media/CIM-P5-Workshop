@@ -1,3 +1,5 @@
+import("../js/p5.min.js");
+
 const noiseScale = 95;
 const cicleSize = 35;
 const circles = [
@@ -44,7 +46,12 @@ function draw() {
         // console.log("MATCHED");
       } else {
         console.log(i, partner);
-        WavyLine(circles[i][0], circles[i][1], circles[partner][0], circles[partner][1]);
+        WavyLine(
+          circles[i][0],
+          circles[i][1],
+          circles[partner][0],
+          circles[partner][1]
+        );
         circles[partner][4].used = true;
       }
     }
@@ -74,7 +81,12 @@ function WavyLine(x1, y1, x2, y2) {
 
     // console.log(xyPositive, xPositive, yPositive, xyNegative);
     // Exit condition
-    if (xyPositive == false && xPositive == false && yPositive == false && xyNegative == false) {
+    if (
+      xyPositive == false &&
+      xPositive == false &&
+      yPositive == false &&
+      xyNegative == false
+    ) {
       console.log("Points too close together. Exiting.");
       return;
     }
@@ -90,10 +102,18 @@ function WavyLine(x1, y1, x2, y2) {
         } else {
           verticies.push([
             Math.floor(
-              ((x2 - x1) / lineSegments) * i + x1 + (negativeDirection ? random(-noiseScale, 1) : random(1, noiseScale))
+              ((x2 - x1) / lineSegments) * i +
+                x1 +
+                (negativeDirection
+                  ? random(-noiseScale, 1)
+                  : random(1, noiseScale))
             ),
             Math.floor(
-              ((y2 - y1) / lineSegments) * i + y1 + (negativeDirection ? random(noiseScale, 1) : random(1, -noiseScale))
+              ((y2 - y1) / lineSegments) * i +
+                y1 +
+                (negativeDirection
+                  ? random(noiseScale, 1)
+                  : random(1, -noiseScale))
             ),
           ]);
           negativeDirection = !negativeDirection;
@@ -110,10 +130,18 @@ function WavyLine(x1, y1, x2, y2) {
         } else {
           verticies.push([
             Math.floor(
-              ((x2 - x1) / lineSegments) * i + x1 + (negativeDirection ? random(-noiseScale, 1) : random(1, noiseScale))
+              ((x2 - x1) / lineSegments) * i +
+                x1 +
+                (negativeDirection
+                  ? random(-noiseScale, 1)
+                  : random(1, noiseScale))
             ),
             Math.floor(
-              ((y2 - y1) / lineSegments) * i + y1 + (negativeDirection ? random(-noiseScale, 1) : random(1, noiseScale))
+              ((y2 - y1) / lineSegments) * i +
+                y1 +
+                (negativeDirection
+                  ? random(-noiseScale, 1)
+                  : random(1, noiseScale))
             ),
           ]);
           negativeDirection = !negativeDirection;
@@ -130,10 +158,18 @@ function WavyLine(x1, y1, x2, y2) {
         } else {
           verticies.push([
             Math.floor(
-              ((x2 - x1) / lineSegments) * i + x1 + (negativeDirection ? random(noiseScale, 1) : random(1, -noiseScale))
+              ((x2 - x1) / lineSegments) * i +
+                x1 +
+                (negativeDirection
+                  ? random(noiseScale, 1)
+                  : random(1, -noiseScale))
             ),
             Math.floor(
-              ((y2 - y1) / lineSegments) * i + y1 + (negativeDirection ? random(noiseScale, 1) : random(1, -noiseScale))
+              ((y2 - y1) / lineSegments) * i +
+                y1 +
+                (negativeDirection
+                  ? random(noiseScale, 1)
+                  : random(1, -noiseScale))
             ),
           ]);
           negativeDirection = !negativeDirection;
@@ -150,10 +186,18 @@ function WavyLine(x1, y1, x2, y2) {
         } else {
           verticies.push([
             Math.floor(
-              ((x2 - x1) / lineSegments) * i + x1 + (negativeDirection ? random(noiseScale, 1) : random(1, -noiseScale))
+              ((x2 - x1) / lineSegments) * i +
+                x1 +
+                (negativeDirection
+                  ? random(noiseScale, 1)
+                  : random(1, -noiseScale))
             ),
             Math.floor(
-              ((y2 - y1) / lineSegments) * i + y1 + (negativeDirection ? random(-noiseScale, 1) : random(1, noiseScale))
+              ((y2 - y1) / lineSegments) * i +
+                y1 +
+                (negativeDirection
+                  ? random(-noiseScale, 1)
+                  : random(1, noiseScale))
             ),
           ]);
           negativeDirection = !negativeDirection;

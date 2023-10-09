@@ -23,6 +23,7 @@
 // How is it different from your drawing?
 //
 // https://whitney.org/education/families/kids-art-challenge/sol-lewitt
+import("../js/p5.min.js");
 
 const count = 24;
 const size = 10;

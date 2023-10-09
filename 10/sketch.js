@@ -23,6 +23,7 @@
 // How is it different from your drawing?
 //
 // https://whitney.org/education/families/kids-art-challenge/sol-lewitt
+import("../js/p5.min.js");
 
 const count = 24;
 const size = 2;
@@ -64,7 +65,12 @@ function draw() {
   }
   for (i = 0; i < count; i++) {
     const randomSize = size * random(1, 10);
-    let data = [random(0, windowWidth), random(0, windowHeight), randomSize, randomSize];
+    let data = [
+      random(0, windowWidth),
+      random(0, windowHeight),
+      randomSize,
+      randomSize,
+    ];
     circles.push(data);
   }
   circles.map((circle, index) => {
@@ -73,7 +79,12 @@ function draw() {
       strokeWeight(4);
       const connection = Math.floor(random(0, circles.length - 1));
       console.log(connection);
-      line(circles[index][0], circles[index][1], circles[connection][0], circles[connection][1]);
+      line(
+        circles[index][0],
+        circles[index][1],
+        circles[connection][0],
+        circles[connection][1]
+      );
       // } else if (index % 2 != 0 && index < 4) {
       // } else if (index == 0) {
     } else if (index % 2 != 0 && index > count / 2) {
@@ -130,11 +141,13 @@ function DrawWaveyLine(x1, y1, x2, y2, index, connectingCircleIndex) {
   let verticies = [];
 
   const xDirPositive =
-    circles[index][0] - circles[connectingCircleIndex][0] > circles[connectingCircleIndex][0] - circles[index][0]
+    circles[index][0] - circles[connectingCircleIndex][0] >
+    circles[connectingCircleIndex][0] - circles[index][0]
       ? true
       : false;
   const yDirPositive =
-    circles[index][1] - circles[connectingCircleIndex][1] > circles[connectingCircleIndex][1] - circles[index][1]
+    circles[index][1] - circles[connectingCircleIndex][1] >
+    circles[connectingCircleIndex][1] - circles[index][1]
       ? true
       : false;
 

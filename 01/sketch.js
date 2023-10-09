@@ -10,6 +10,8 @@
 // and variables that are defined in the library.
 // You can find the documentation for P5.js here: https://p5js.org/reference/
 
+import("../js/p5.min.js");
+
 let size = 80;
 
 // This function runs once when the sketch starts up
@@ -38,22 +40,27 @@ function draw() {
     windowHeight / 2 - size / 2 + size
   );
 
-  line(windowWidth / 10, windowHeight / 10, windowWidth * 0.9, windowHeight * 0.9);
+  line(
+    windowWidth / 10,
+    windowHeight / 10,
+    windowWidth * 0.9,
+    windowHeight * 0.9
+  );
 
   textSize(32);
   text("Hello World", windowWidth / 2, 30);
-  
+
   //// Offset the text by half of it's width to center the text
   textSize(64);
-  fill(255,255,255)
+  fill(255, 255, 255);
   text("Hello World", windowWidth / 2 - textWidth() / 2, windowHeight / 4);
 
   //// But read the documentation becuase P5 provides a lot of helper functions
   //// which means you don't have to do it yourself.
-  push()
-  textAlign(CENTER)
+  push();
+  textAlign(CENTER);
   text("Hello World", windowWidth / 2, windowHeight / 3);
-  pop()
+  pop();
 
   // Also push & pop allow us to isolate certain elements and parameters
 }
