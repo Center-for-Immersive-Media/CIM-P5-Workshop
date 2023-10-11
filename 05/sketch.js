@@ -1,14 +1,8 @@
 ////////////////////////////////////////////////////////////
 //
-//  Lesson 04 - Mixing media
+//  Lesson 05 - Mixing media
 //
 ////////////////////////////////////////////////////////////
-
-// NOTES:
-// We have loaded the P5.js library in the index.html file.
-// Since the P5.js library is loaded, we can use the functions
-// and variables that are defined in the library.
-// You can find the documentation for P5.js here: https://p5js.org/reference/
 
 let shape, aspectRatio, scaledWidth, scaledHeight, imageIndex;
 let maskPosition = [];

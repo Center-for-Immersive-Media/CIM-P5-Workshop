@@ -45,19 +45,27 @@ function draw() {
     windowHeight * 0.9
   );
 
-  textSize(32);
-  text("Hello World", windowWidth / 2, 30);
+  textSize(24);
+  text("Hello World! It's nice to meet you.", windowWidth / 2, 30);
 
   //// Offset the text by half of it's width to center the text
-  textSize(64);
+  textSize(48);
   fill(255, 255, 255);
-  text("Hello World", windowWidth / 2 - textWidth() / 2, windowHeight / 4);
+  text(
+    "Hello World! It's nice to meet you.",
+    windowWidth / 2 - textWidth() / 2,
+    windowHeight / 4
+  );
 
   //// But read the documentation because P5 provides a lot of helper functions
   //// which means you don't have to do it yourself.
   push();
   textAlign(CENTER);
-  text("Hello World", windowWidth / 2, windowHeight / 3);
+  text(
+    "Hello World! It's nice to meet you.",
+    windowWidth / 2,
+    windowHeight / 3
+  );
   pop();
 
   // Also push & pop allow us to isolate certain elements and parameters
