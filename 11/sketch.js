@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////
 //
-//  Lession 10 - Sol Lewitt Challenge
+//  Lesson 10 - Sol Lewitt Challenge
 //
 ////////////////////////////////////////////////////////////
 
@@ -23,12 +23,11 @@
 // How is it different from your drawing?
 //
 // https://whitney.org/education/families/kids-art-challenge/sol-lewitt
-import("../js/p5.min.js");
 
 const count = 24;
 const size = 10;
 const noiseScale = 175;
-const cicleSize = 35;
+const circleSize = 35;
 
 let fps = 1 / 2;
 let straightLineColor;

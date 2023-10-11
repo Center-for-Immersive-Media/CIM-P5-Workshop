@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lession 00 - Programing Basics</title>
+    <title>Lesson 00 - The Basics</title>
     <!-- Loads our Javascript file -->
     <script src="./scripts.js" type="application/javascript"></script>
     <!-- Stylesheets -->
@@ -22,12 +22,11 @@
       margin: 50px auto;
       max-width: 1000px;
       background-color: rgb(255, 204, 0);
-      color: white;
       font-family: 'IBM Plex Mono', monospace;
     "
   >
-    <h1 id="title">Introduction to Programing and Web Development</h1>
-    <p>This is a raw webpage with a number of html elements</p>
+    <h1 id="title">Introduction to Programming and Web Development</h1>
+    <p>This is a webpage with a number of html elements</p>
     <br />
     <hr />
     <br />
@@ -82,6 +81,10 @@
     <!-- Style tags let us write CSS in HTML -->
     <!-- But we ussually stick styles in our CSS file -->
     <style>
+      * {
+        color: black;
+      }
+
       table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
@@ -90,17 +93,17 @@
 
       td,
       th {
-        border: 1px solid #dddddd;
+        border: 1px solid #000;
         text-align: left;
         padding: 8px;
       }
 
       tr:nth-child(even) {
-        background-color: #dddddd;
+        background-color: #aaa;
       }
       hr {
-        background-color: white;
-        color: white;
+        background-color: black;
+        color: black;
         border: none;
         padding: 1px;
       }

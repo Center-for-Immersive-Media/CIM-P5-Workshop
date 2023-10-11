@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////
 //
-//  Lession 01 - Getting started with P5.js
+//  Lesson 01 - Getting started with P5.js
 //
 ////////////////////////////////////////////////////////////
 
@@ -9,8 +9,6 @@
 // Since the P5.js library is loaded, we can use the functions
 // and variables that are defined in the library.
 // You can find the documentation for P5.js here: https://p5js.org/reference/
-
-import("../js/p5.min.js");
 
 let size = 80;
 
@@ -25,7 +23,7 @@ function draw() {
   background(color(255, 204, 0));
   ellipse(50, 50, 80, 80);
 
-  //// Croshairs
+  //// Crosshairs
   line(windowWidth / 2, 0, windowWidth / 2, windowHeight);
   line(0, windowHeight / 2, windowWidth, windowHeight / 2);
 
@@ -55,7 +53,7 @@ function draw() {
   fill(255, 255, 255);
   text("Hello World", windowWidth / 2 - textWidth() / 2, windowHeight / 4);
 
-  //// But read the documentation becuase P5 provides a lot of helper functions
+  //// But read the documentation because P5 provides a lot of helper functions
   //// which means you don't have to do it yourself.
   push();
   textAlign(CENTER);
@@ -65,6 +63,7 @@ function draw() {
   // Also push & pop allow us to isolate certain elements and parameters
 }
 
+// Function that runs when you resize the browser window
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }

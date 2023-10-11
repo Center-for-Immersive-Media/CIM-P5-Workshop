@@ -1,10 +1,10 @@
 import("../js/p5.min.js");
 
 const preview = document.getElementById("preview");
-const lessions = document.querySelectorAll(".lession");
+const Lessons = document.querySelectorAll(".lesson");
 
-lessions.forEach((lession) => {
-  lession.addEventListener("mouseover", () => {
-    preview.src = `./images/${lession.dataset.source}`;
+Lessons.forEach((Lesson) => {
+  Lesson.addEventListener("mouseover", () => {
+    preview.src = `./images/${Lesson.dataset.source}`;
   });
 });
