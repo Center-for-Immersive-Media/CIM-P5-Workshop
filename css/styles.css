@@ -21,8 +21,17 @@ body {
   max-width: 1000px;
 }
 
+p {
+  line-height: 1.5rem;
+}
+
 ul {
   list-style: none;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
 }
 
 #preview {
@@ -84,6 +93,10 @@ a:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+.dark {
+  background-color: rgba(225, 225, 225, 1);
+}
+
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 170px;
@@ -102,4 +115,35 @@ a:hover {
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+dialog {
+  max-width: 500px;
+  padding: 50px;
+  border-radius: 4px;
+  border: 2px solid black;
+}
+
+dialog > .flex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+dialog > .flex > button {
+  display: block;
+  padding: 5px 10px;
+  border-radius: 2px;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
+h2 {
+  margin-bottom: 40px;
+}
+
+::backdrop {
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.9);
 }
