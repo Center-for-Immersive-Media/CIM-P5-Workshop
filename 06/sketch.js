@@ -1,87 +1,75 @@
-let potentialPartners, pairs;
+let potentialPartners;
+let wavy = true;
 const noiseScale = 95;
-const circleSize = 35;
+const circleSize = 50;
+const fontSize = 24;
 const circles = [
-  [200, 250, circleSize, circleSize, { used: false, index: 0 }],
-  [600, 800, circleSize, circleSize, { used: false, index: 1 }],
-  [1100, 500, circleSize, circleSize, { used: false, index: 2 }],
-  [800, 700, circleSize, circleSize, { used: false, index: 3 }],
-  [350, 900, circleSize, circleSize, { used: false, index: 4 }],
-  [1100, 648, circleSize, circleSize, { used: false, index: 5 }],
+  [200, 250, circleSize, circleSize],
+  [1100, 700, circleSize, circleSize],
+  [600, 500, circleSize, circleSize],
+  [900, 800, circleSize, circleSize],
+  [350, 600, circleSize, circleSize],
+  [1100, 300, circleSize, circleSize],
+  [1500, 750, circleSize, circleSize],
+  [950, 900, circleSize, circleSize],
 ];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   fill(color(0, 0, 0, 0));
   strokeJoin(ROUND);
+  textSize(fontSize);
   frameRate(0);
   draw();
-
-  pairs = [];
 }
 
 function draw() {
   clear();
-  background(color(255, 204, 0));
+  background(255, 204, 0);
 
-  // Draw Points
-  // DrawCircles();
-  DefinePairs();
+  circles.map((circle, index) => {
+    if (index % 2) {
+      if (wavy) {
+        console.log("drawing wavy line " + (index - 1) + " / " + index);
+        WavyLine(
+          circles[index - 1][0],
+          circles[index - 1][1],
+          circle[0],
+          circle[1]
+        );
+        console.log(index);
+        wavy = false;
+      } else {
+        console.log("drawing line");
+        line(
+          circles[index - 1][0],
+          circles[index - 1][1],
+          circle[0],
+          circle[1]
+        );
+        wavy = true;
+      }
+    }
+  });
+
+  push();
+  stroke(0, 0, 0);
+  strokeWeight(3);
+  DrawCircles();
+  pop();
 }
 
 function DrawCircles() {
   for (i = 0; i < circles.length; i++) {
-    if (i == 0) {
-      stroke(255, 0, 0);
-    } else {
-      stroke(0, 0, 0);
-    }
+    text(`${i}`, circles[i][0] - 8, circles[i][1] + 8);
     ellipse(circles[i][0], circles[i][1], circles[i][2], circles[i][3]);
   }
 }
 
-function DefinePairs() {
-  //  Clears potential partner list
-  potentialPartners = [];
-  for (i = 0; i < circles.length - 1; i++) {
-    circles[i][4].used = false;
-  }
-
-  // Filters unused
-  for (i = 0; i < circles.length; i++) {
-    console.log(i + "of" + circles.length);
-
-    if (circles[i][4].used == true) {
-      console.log("already used");
-      return;
-    } else {
-      // Filter new list
-      potentialPartners = circles.filter((circle) => circle[4].used == false);
-      const randomIndex = Math.round(random(0, potentialPartners.length - 1));
-      pair = [circles[i][4].index, potentialPartners[randomIndex][4].index];
-      console.log(pair);
-      // console.log(potentialPartners);
-      circles[i][4].used = true;
-      circles[randomIndex][4].used = true;
-
-      // const partner = Math.round(random(0, potentialPartners.length - 1));
-      // console.log("Selected:" + partner, "From:", potentialPartners);
-      // WavyLine(
-      //   circles[i][0],
-      //   circles[i][1],
-      //   circles[partner][0],
-      //   circles[partner][1]
-      // );
-      // circles[partner][4].used = true;
-      // potentialPartners = circles.filter((circle) => circle[4].used == false);
-    }
-  }
-}
-
 function WavyLine(x1, y1, x2, y2) {
-  console.log("test");
   const lineWeight = random(4, 8);
   const lineSegments = Math.floor(random(8, 18));
+  // console.log(lineSegments + " total line segments");
   let vertices = [];
 
   function InterpolateWavyVertices() {
@@ -106,7 +94,7 @@ function WavyLine(x1, y1, x2, y2) {
         console.log("XY Positive");
         if (i == 1 || i == lineSegments - 1) {
           vertices.push([
-            Math.floor(((x2 - x1) / lineSegments) * i + x1),
+            Math.round(((x2 - x1) / lineSegments) * i + x1),
             Math.floor(((y2 - y1) / lineSegments) * i + y1),
           ]);
         } else {
@@ -214,9 +202,11 @@ function WavyLine(x1, y1, x2, y2) {
         }
       }
     }
+
+    // console.log(vertices);
   }
 
-  function Draw() {
+  function Paint() {
     beginShape();
     stroke(random(255), random(255), random(255));
     strokeWeight(Math.floor(random(2, 20)));
@@ -229,5 +219,5 @@ function WavyLine(x1, y1, x2, y2) {
   }
 
   InterpolateWavyVertices();
-  Draw();
+  Paint();
 }

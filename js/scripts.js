@@ -8,7 +8,7 @@ const closeButton = document.querySelector(
 
 Lessons.forEach((Lesson) => {
   Lesson.addEventListener("mouseover", () => {
-    preview.src = `./images/${Lesson.dataset.source}`;
+    preview.src = `./images/previews/${Lesson.dataset.source}`;
   });
 });
 

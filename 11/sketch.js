@@ -1,11 +1,11 @@
 ////////////////////////////////////////////////////////////
 //
-//  Lesson 10 - Sol Lewitt Challenge
+//  Lesson 10 - Sol LeWitt Challenge
 //
 ////////////////////////////////////////////////////////////
 
 // NOTES:
-// Each time they are in an exhibition, Sol Lewitt’s drawings are made right on the wall.
+// Each time they are in an exhibition, Sol LeWitt’s drawings are made right on the wall.
 // The people drawing them use a set of instructions written by the artist.
 // The instructions are open to interpretation: often, the people following them have to
 // decide where the lines or shapes should go. A wall drawing like this one looks a little

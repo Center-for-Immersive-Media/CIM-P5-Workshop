@@ -4,8 +4,8 @@
 //
 ////////////////////////////////////////////////////////////
 
-let size = 800;
-let speed = 2;
+const size = 400;
+const speed = 3;
 let position1, position2;
 let falling = true;
 
@@ -22,8 +22,11 @@ function setup() {
 
 // This function runs continuously, forever
 function draw() {
+  // Clear image buffer
   clear();
   background(255, 204, 0);
+
+  // Update position1 to move left or reset
   if (position1[0] <= -size / 2) {
     position1[0] = windowWidth + size / 2;
   } else {
@@ -31,6 +34,7 @@ function draw() {
   }
   ellipse(...position1);
 
+  // Update position2 to move up or down
   push();
   fill(0, 0, 0, 0);
   stroke(255, 255, 255);

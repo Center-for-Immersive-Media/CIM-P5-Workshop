@@ -4,147 +4,67 @@
 //
 ////////////////////////////////////////////////////////////
 
-let shape, aspectRatio, scaledWidth, scaledHeight, imageIndex;
-let maskPosition = [];
-const margin = 50;
-const imageScale = 0.2;
-const circleScale = 0.2;
-const circleOffset = 105;
-const videoSize = 1080;
-const videoAspectRatio = 16 / 9;
-let windowAspectRatio;
-const images = [];
+let videoMask, imageMapCursor, imageMapIndex;
+const size = 1000;
+const images = [[], [], []];
 
 // This function runs before we start our application
 function preload() {
-  img = loadImage("../images/marks/reflections_texture.jpg");
-  vid = createVideo(["../videos/RainbowTextureLooped.mp4"]);
+  for (i = 1; i <= 6; i++) {
+    images[0].push(loadImage(`../images/stop_motion/${i}.png`));
+  }
+  for (i = 7; i <= 12; i++) {
+    images[1].push(loadImage(`../images/stop_motion/${i}.png`));
+  }
+  for (i = 13; i <= 18; i++) {
+    images[2].push(loadImage(`../images/stop_motion/${i}.png`));
+  }
+
+  // Create a video that autoplays on mute
+  vid = createVideo("../videos/RainbowTextureLoopedCompressed.mp4");
   vid.muted = true;
   vid.hide();
   vid.loop();
   vid.volume(0);
   vid.play();
-  imageIndex = 0;
-
-  for (i = 1; i <= 16; i++) {
-    images.push(loadImage(`../images/stop_motion/${i}.jpg`));
-  }
 }
 
 // This function runs once when the sketch starts up
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  windowAspectRatio = windowWidth / windowHeight;
-  shape = createGraphics(windowWidth, windowHeight);
-  aspectRatio = img.width / img.height;
-  scaledWidth = img.width * imageScale;
-  scaledHeight = img.height * imageScale;
-  maskPosition[0] = windowWidth / 2;
-  maskPosition[1] = windowHeight / 2;
-
-  fill(0, 0, 0, 0);
-  stroke(255, 255, 255);
-  strokeWeight(4);
   ellipseMode(CENTER);
   imageMode(CENTER);
-  rectMode(CENTER);
+
+  // Create a shape graphic
+  videoMask = createGraphics(windowWidth, windowHeight);
 }
 
 // This function runs continuously, forever
 function draw() {
-  shape.clear();
+  // Clear shape, image buffer & set background
+  videoMask.clear();
   clear();
-  background(color(255, 204, 0));
+  background(255, 204, 0);
 
-  imageIndex = Math.round(map(mouseX, 0, windowWidth, 0, 16 - 1, true));
+  // Add an ellipse to our video mask
+  videoMask.ellipse(mouseX, mouseY, size / 2, size / 2);
+  vid.mask(videoMask);
 
+  // Draw our video
+  image(vid, windowWidth / 2, windowHeight / 2, windowWidth, windowHeight);
+
+  // Map our image to cursor position
+  imageMapCursor = Math.round(map(mouseY, 0, windowHeight, 0, 2));
+  imageMapIndex = Math.round(map(mouseX, 0, windowWidth, 0, 5));
+
+  // Draw our subject
   image(
-    images[imageIndex],
+    images[imageMapCursor][imageMapIndex],
     windowWidth / 2,
-    windowHeight / 2,
-    (videoSize / 1.5) * videoAspectRatio,
-    videoSize / 1.5
+    windowHeight - size / 2,
+    size,
+    size
   );
-
-  rect(
-    windowWidth / 2,
-    windowHeight / 2,
-    (videoSize / 1.75) * videoAspectRatio,
-    videoSize / 1.75
-  );
-  rect(
-    windowWidth / 2,
-    windowHeight / 2,
-    videoSize * videoAspectRatio,
-    videoSize
-  );
-  shape.ellipse(
-    mouseX - circleOffset,
-    windowHeight / 2,
-    (250 / 1.5) * videoAspectRatio,
-    250
-  );
-  shape.ellipse(
-    mouseX + circleOffset,
-    windowHeight / 2,
-    (250 / 1.5) * videoAspectRatio,
-    250
-  );
-  // shape.rect(maskPosition[0] + circleOffset, windowHeight / 2, 500, 500);
-  vid.mask(shape);
-  image(
-    vid,
-    windowWidth / 2,
-    windowHeight / 2,
-    videoSize * videoAspectRatio,
-    videoSize
-  );
-
-  // image(img, windowWidth / 2, windowHeight / 2, scaledWidth, scaledHeight);
-  // rect(windowWidth / 2, windowHeight / 2, scaledWidth, scaledHeight);
-  ellipse(
-    mouseX - circleOffset,
-    windowHeight / 2,
-    (250 * videoAspectRatio) / 1.5,
-    250
-  );
-  ellipse(
-    mouseX + circleOffset,
-    windowHeight / 2,
-    (250 * videoAspectRatio) / 1.5,
-    250
-  );
-  push();
-  fill(0, 0, 0);
-  ellipse(
-    mouseX - circleOffset,
-    windowHeight / 2,
-    ((250 * videoAspectRatio) / 1.5) * 0.5,
-    250 * 0.5
-  );
-  ellipse(
-    mouseX + circleOffset,
-    windowHeight / 2,
-    ((250 * videoAspectRatio) / 1.5) * 0.5,
-    250 * 0.5
-  );
-  fill(150, 175, 225);
-  ellipse(
-    mouseX - circleOffset,
-    windowHeight / 2,
-    ((250 * videoAspectRatio) / 1.5) * 0.25,
-    250 * 0.5
-  );
-  ellipse(
-    mouseX + circleOffset,
-    windowHeight / 2,
-    ((250 * videoAspectRatio) / 1.5) * 0.25,
-    250 * 0.5
-  );
-  pop();
-
-  // image(shape, maskPosition[0], maskPosition[1]);
-  // maskPosition[0] = maskPosition[0] + 1.5;
 }
 
 function windowResized() {
