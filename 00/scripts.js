@@ -7,13 +7,13 @@
 // ====== COMMENTS ======
 // Comments are used to explain what the code does.
 // Comments are ignored by the computer when the code is run.
-// We can create a single line comment by using two forward slashes.
+// We can create a comment by using two forward slashes.
 
 // ====== CONSOLE ======
 // The console is a tool that allows us to see the output of our program.
 // We can open the console by pressing the F12 key.
 //****************************
-// console.log("Hello World!");
+console.log("Hello World!");
 //****************************
 
 // ====== VARIABLES ======
@@ -29,14 +29,14 @@
 var x = 50;
 
 // New way of declaring variables
-const y = 50;
-let z = 50;
+const y = 50; // Will never change
+let z = 50; // Should only be used when the variable has to change later
 
 // Reassigning a variable
 //****************************
-// z = "Hello";
-// y = "World";
-// console.log(z + " " + y);
+z = "Hello";
+// y = "World"; // THIS WOULD THROW AN ERROR
+console.log(z + " " + y);
 //****************************
 
 // ====== FUNCTIONS / METHODS / ROUTINES ======
@@ -51,8 +51,8 @@ function Add(x, y) {
 }
 
 //****************************
-// console.log(Add(5, 10));
-// console.log(5 + 10);
+console.log(Add(5, 10));
+console.log(5 + 10);
 //****************************
 
 function isEven(x) {
@@ -64,8 +64,8 @@ function isEven(x) {
 }
 
 //****************************
-// console.log(isEven(5));
-// console.log(`Is 5 even? ${isEven(5)}`);
+console.log(isEven(5));
+console.log(`Is 5 even? ${isEven(5)}`);
 //****************************
 
 // ====== ARRAYS ======
@@ -77,10 +77,10 @@ function isEven(x) {
 const names = ["Kevin", "Alan", "Joe", "Cody"];
 
 //****************************
-// console.log(names[1]);
-// console.log(`Hi, my name is ${names[0]}`);
-// console.log(names.length);
-// console.log(names);
+console.log(names[1]);
+console.log(`Hi, my name is ${names[0]}`); // Template strings
+console.log(names.length);
+console.log(names);
 //****************************
 
 // ====== OBJECTS ======
@@ -101,16 +101,17 @@ const person = {
     zip: "10001",
   },
   greet: function () {
-    console.log(`Hi, my name is ${this.name}`);
+    console.log(`Hi, my name is ${this.firstName} ${this.lastName}`);
+    // the 'this.' keyword is required when nesting objects
   },
 };
 
 //****************************
-// console.log(person["firstName"]);
-// console.log(person.firstName);
-// console.log(person.hobbies[1]);
-// console.log(person.address.city);
-// person.greet();
+console.log(person["firstName"]);
+console.log(person.firstName);
+console.log(person.hobbies[1]);
+console.log(person.address.city);
+person.greet();
 //****************************
 
 // ====== CONDITIONALS ======
@@ -119,44 +120,31 @@ const person = {
 // We can use the if statement to run a block of code if a condition is true.
 // We can use the else statement to run a block of code if a condition is false.
 //****************************
-// if (person.age >= 21) {
-//   console.log("You can rent a car!");
-// } else {
-//   console.log("You can't rent a car!");
-// }
+if (person.age >= 21) {
+  console.log("You can rent a car!");
+} else {
+  console.log("You can't rent a car!");
+}
 //****************************
 
-// ====== LOOPS ======
+// ====== LOOPS  ======
 // A loop is a block of code that is repeated a certain number of times.
 // We can use loops to run a block of code multiple times.
 // We can use the for loop to run a block of code a certain number of times.
 // We can use the while loop to run a block of code while a condition is true.
 //****************************
-// for (let i = 0; i < 10; i++) {
-//   console.log(i);
-// }
+for (let i = 0; i < 10; i++) {
+  console.log(i);
+}
 
-// let i = 0;
-// while (i < 10) {
-//   console.log(i);
-//   i++;
-// }
+let i = 0;
+while (i < 10) {
+  console.log(i);
+  i++;
+}
 
-// names.map((name) => {
-//   console.log(name);
-// });
-// Arrays have a .map method that allows us to run a function on each item in the array.
-//****************************
-
-// ====== DOM ======
-// The DOM is a tree-like structure that represents the HTML of a webpage.
-// We can use JavaScript to manipulate the DOM.
-// We can use the document object to access the DOM.
-// We can use the getElementById method to get an element by its id.
-
-// const title = document.querySelector("#title");
-// console.log(title);
-
-//****************************
-// title.innerHTML = "Hello World!";
+// Arrays have a .map() method that allows us to run a function on each item in the array.
+names.map((name) => {
+  console.log(name);
+});
 //****************************

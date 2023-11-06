@@ -10,14 +10,15 @@
 // and variables that are defined in the library.
 // You can find the documentation for P5.js here: https://p5js.org/reference/
 
-let size = 80;
+var size = 80;
 
 // This function runs once when the sketch starts up
 function setup() {
-  // Create a full window canvas & set its background
+  // Create a full window canvas, set its background & colors
   createCanvas(windowWidth, windowHeight);
-  background(color(255, 204, 0));
-
+  background(255, 204, 0);
+  fill(255, 255, 255);
+  stroke(0, 0, 0);
   // Draw a circle
   ellipse(50, 50, 80, 80);
 
@@ -28,46 +29,20 @@ function setup() {
   // Draw a circle, rectangle & triangle
   ellipse(windowWidth / 2, windowHeight / 2, size, size);
   rect(windowWidth / 4, windowHeight / 2 - size / 2, size, size);
-  triangle(
-    windowWidth / 1.75 + size / 3,
-    windowHeight / 2 - size / 2 + size,
-    windowWidth / 1.75 + 58,
-    windowHeight / 2 - size / 2,
-    windowWidth / 1.75 + 86,
-    windowHeight / 2 - size / 2 + size
-  );
-
-  // Draw a diagonal line
-  line(
-    windowWidth / 10,
-    windowHeight / 10,
-    windowWidth * 0.9,
-    windowHeight * 0.9
-  );
 
   // Draw text
   textSize(18);
   text("Hello World! It's nice to meet you.", windowWidth / 2, 30);
 
   // Offset the text by half of it's width to center the text
-  textSize(32);
-  fill(255, 255, 255);
-  text(
-    "Hello World! It's nice to meet you.",
-    windowWidth / 2 - textWidth() / 2,
-    windowHeight / 4
-  );
-
-  //// But read the documentation because P5 provides a lot of helper functions
-  //// which means you don't have to do it yourself.
-  push();
+  textSize(48);
   textAlign(CENTER);
+  strokeWeight(0);
   text(
     "Hello World! It's nice to meet you.",
     windowWidth / 2,
-    windowHeight / 3
+    windowHeight / 4
   );
-  pop();
 }
 
 // Function that runs when you resize the browser window

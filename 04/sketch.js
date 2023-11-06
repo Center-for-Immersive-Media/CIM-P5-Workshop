@@ -1,69 +1,72 @@
 ////////////////////////////////////////////////////////////
 //
-//  Lesson 04 - Inputs
+//  Lesson 05 - Mixing media
 //
 ////////////////////////////////////////////////////////////
 
-let delay = 0;
-let pressed = false;
-let randomDelay;
-const images = [];
+let videoMask, imageMapCursor, imageMapIndex;
+const size = 1000;
+const images = [[], [], []];
 
+// This function runs before we start our application
 function preload() {
-  // Load all the image in a for loop
-  // for loops take three arguments (initialization; condition; afterthought)
-  for (i = 1; i < 41; i++) {
-    images.push(loadImage(`../images/symbols/${i}.jpg`));
+  for (i = 1; i <= 6; i++) {
+    images[0].push(loadImage(`../images/stop_motion/${i}.png`));
   }
+  for (i = 7; i <= 12; i++) {
+    images[1].push(loadImage(`../images/stop_motion/${i}.png`));
+  }
+  for (i = 13; i <= 18; i++) {
+    images[2].push(loadImage(`../images/stop_motion/${i}.png`));
+  }
+
+  // Create a video that autoplays on mute
+  vid = createVideo("../videos/RainbowTextureLoopedCompressed.mp4");
+  vid.muted = true;
+  vid.hide();
+  vid.loop();
+  vid.volume(0);
+  vid.play();
 }
 
 // This function runs once when the sketch starts up
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(color(255, 204, 0));
+  ellipseMode(CENTER);
   imageMode(CENTER);
-  blendMode(DIFFERENCE);
-  randomDelay = Math.floor(random(2, 25));
+
+  // Create a shape graphic
+  videoMask = createGraphics(windowWidth, windowHeight);
 }
 
 // This function runs continuously, forever
 function draw() {
-  // Increment the delay counter
-  delay++;
+  // Clear shape, image buffer & set background
+  videoMask.clear();
+  clear();
+  background(255, 204, 0);
 
-  if (pressed && delay > randomDelay) {
-    // clear();
-    // background(color(255, 204, 0));
+  // Add an ellipse to our video mask
+  videoMask.ellipse(mouseX, mouseY, size / 2, size / 2);
+  vid.mask(videoMask);
 
-    // Generate a random image & random scale
-    randomImageIndex = Math.floor(random(0, images.length - 1));
-    randomScaleModifier = Math.floor(random(100, 600));
+  // Draw our video
+  image(vid, windowWidth / 2, windowHeight / 2, windowWidth, windowHeight);
 
-    // Draw the image
-    image(
-      images[randomImageIndex],
-      mouseX,
-      mouseY,
-      randomScaleModifier,
-      randomScaleModifier
-    );
+  // Map our image to cursor position
+  imageMapCursor = Math.round(map(mouseY, 0, windowHeight, 0, 2));
+  imageMapIndex = Math.round(map(mouseX, 0, windowWidth, 0, 5));
 
-    // Clear the delay counter and generate a new random delay
-    randomDelay = Math.floor(random(2, 15));
-    delay = 0;
-  }
+  // Draw our subject
+  image(
+    images[imageMapCursor][imageMapIndex],
+    windowWidth / 2,
+    windowHeight - size / 2,
+    size,
+    size
+  );
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
-}
-
-// This function fires when the mouse is press
-function mousePressed() {
-  pressed = true;
-}
-
-// This function fires when the mouse is released
-function mouseReleased() {
-  pressed = false;
 }
